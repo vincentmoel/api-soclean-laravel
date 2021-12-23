@@ -15,6 +15,8 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
             $table->string('invoice');
             $table->integer('weight');
             $table->string('service');
