@@ -34,7 +34,10 @@ class TransactionController extends Controller
 
     public function show(Transaction $transaction)
     {
-        //
+        return response()->json([
+            'data' => $transaction
+        ]);
+        // return $transaction;
     }
 
     public function update(Request $request, Transaction $transaction)

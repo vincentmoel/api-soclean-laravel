@@ -11,6 +11,9 @@ class Transaction extends Model
 
     protected $guarded = [];
 
-
+    public function getRouteKeyName()
+    {
+        return 'invoice';
+    }
 
 }
