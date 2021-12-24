@@ -19,7 +19,8 @@ class AuthController extends Controller
         $validatedData['password'] = bcrypt($request->password);
 
         User::create($validatedData);
-        return response('Register success!');
+        return response()->json(['message' => 'success']);
+
     }
 
     public function login(Request $request)
