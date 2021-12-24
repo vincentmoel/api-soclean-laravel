@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 
@@ -11,7 +12,9 @@ class TransactionController extends Controller
 
     public function index()
     {
-        
+        return response()->json([
+            'data' => Transaction::get()
+        ]);
     }
 
 
@@ -20,13 +23,13 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'address' => 'required',
+            'invoice' => 'required',
             'weight' => 'required|numeric',
             'service' => 'required',
             'price' => 'required|numeric',
             'status' => 'required'
         ]);
 
-        $validatedData['invoice'] = 1;
         Transaction::create($validatedData);
 
         return response()->json(['message' => 'success']);
@@ -37,16 +40,25 @@ class TransactionController extends Controller
         return response()->json([
             'data' => $transaction
         ]);
-        // return $transaction;
     }
 
     public function update(Request $request, Transaction $transaction)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'weight' => 'required|numeric',
+            'service' => 'required',
+            'price' => 'required|numeric',
+            'status' => 'required'
+        ]);
 
-    public function destroy(Transaction $transaction)
-    {
-        //
+        $transaction = Transaction::where('invoice',$transaction->invoice)->update($validatedData);
+
+
+
+        return response()->json([
+            'message' => "success"
+        ]);
     }
 }
