@@ -13,7 +13,7 @@ class Transaction extends Model
 
     public function getRouteKeyName()
     {
-        return 'invoice';
+        return 'kode_pesanan';
     }
 
 }
