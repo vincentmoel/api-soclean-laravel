@@ -28,11 +28,11 @@ Route::post('/logout',[AuthController::class,'logout']);
 
 Route::group(['middleware' => ['auth:api']], function () {
 
-    Route::get('/user',[UserController::class,'index']);
-    Route::get('/transaction',[TransactionController::class,'index']);
-    Route::post('/transaction',[TransactionController::class,'store']);
-    Route::put('/transaction/{transaction}',[TransactionController::class,'update']);
     
 });
 
+Route::get('/user',[UserController::class,'index']);
+Route::get('/transaction',[TransactionController::class,'index']);
+Route::post('/transaction',[TransactionController::class,'store']);
+Route::put('/transaction/{transaction}',[TransactionController::class,'update']);
 Route::get('/transaction/{transaction}',[TransactionController::class,'show']);
