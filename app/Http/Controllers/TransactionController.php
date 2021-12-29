@@ -22,12 +22,15 @@ class TransactionController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'address' => 'required',
-            'invoice' => 'required',
-            'weight' => 'required|numeric',
-            'service' => 'required',
-            'price' => 'required|numeric',
-            'status' => 'required'
+            'member' => 'required',
+            'kode_pesanan' => 'required',
+            'layanan' => 'required',
+            'paket' => 'required',
+            'berat' => 'required',
+            'tgl_masuk' => 'required',
+            'tgl_estimasi' => 'required',
+            'status' => 'required',
+            'harga' => 'required',
         ]);
 
         Transaction::create($validatedData);
@@ -46,11 +49,15 @@ class TransactionController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'address' => 'required',
-            'weight' => 'required|numeric',
-            'service' => 'required',
-            'price' => 'required|numeric',
-            'status' => 'required'
+            'member' => 'required',
+            'kode_pesanan' => 'required',
+            'layanan' => 'required',
+            'paket' => 'required',
+            'berat' => 'required',
+            'tgl_masuk' => 'required',
+            'tgl_estimasi' => 'required',
+            'status' => 'required',
+            'harga' => 'required',
         ]);
 
         $transaction = Transaction::where('invoice',$transaction->invoice)->update($validatedData);
