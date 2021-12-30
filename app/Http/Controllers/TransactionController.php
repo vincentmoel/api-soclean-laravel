@@ -47,6 +47,7 @@ class TransactionController extends Controller
 
     public function update(Request $request, Transaction $transaction)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'status' => 'required',
         ]);
