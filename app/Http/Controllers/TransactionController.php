@@ -60,7 +60,7 @@ class TransactionController extends Controller
             'harga' => 'required',
         ]);
 
-        $transaction = Transaction::where('kode_pesanan',$transaction->kode_pesanan)->update($validatedData);
+        $transaction = Transaction::where('id',$transaction->id)->update($validatedData);
 
 
 

@@ -16,7 +16,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $validatedData['password'] = bcrypt($request->password);
+        $validatedData['password'] = $request->password;
 
         User::create($validatedData);
         return response()->json(['message' => 'success']);
