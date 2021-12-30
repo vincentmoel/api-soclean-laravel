@@ -30,12 +30,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if(!$token = auth()->attempt($request->only('username','password')))
+        // if(!$token = auth()->attempt($request->only('username','password')))
+        // {
+        //     return response(null,401);
+        // }
+
+        
+        if(User::where('username',$request->username)->where('password',$request->password)->count() > 0)
         {
-            return response(null,401);
+            return response()->json(['message' => 'success']);
         }
         
-        return response()->json(['token'=> $token]);
+        return response()->json(['message' => 'failed']);
     }
 
     public function logout()

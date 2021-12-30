@@ -48,16 +48,7 @@ class TransactionController extends Controller
     public function update(Request $request, Transaction $transaction)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'member' => 'required',
-            'kode_pesanan' => 'required',
-            'layanan' => 'required',
-            'paket' => 'required',
-            'berat' => 'required',
-            'tgl_masuk' => 'required',
-            'tgl_estimasi' => 'required',
             'status' => 'required',
-            'harga' => 'required',
         ]);
 
         $transaction = Transaction::where('id',$transaction->id)->update($validatedData);
