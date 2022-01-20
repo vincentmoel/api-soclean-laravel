@@ -36,12 +36,14 @@ class AuthController extends Controller
         }
 
         
-        if(User::where('username',$request->username)->where('password',$request->password)->count() > 0)
-        {
-            return response()->json(['message' => 'success']);
-        }
+        // if(User::where('username',$request->username)->where('password',$request->password)->count() > 0)
+        // {
+        //     return response()->json(['message' => 'success']);
+        // }
         
-        return response()->json(['message' => 'failed','token' => $token]);
+        // return response()->json(['message' => 'failed','token' => $token]);
+
+        return response()->json(['message' => 'success', 'token' => $token]);
     }
 
     public function logout()
