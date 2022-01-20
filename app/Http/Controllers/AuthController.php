@@ -16,7 +16,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $validatedData['password'] = $request->password;
+        $validatedData['password'] = bcrypt($request->password);
 
         User::create($validatedData);
         return response()->json(['message' => 'success']);
@@ -44,6 +44,7 @@ class AuthController extends Controller
         // return response()->json(['message' => 'failed','token' => $token]);
 
         return response()->json(['message' => 'success', 'token' => $token]);
+
     }
 
     public function logout()
